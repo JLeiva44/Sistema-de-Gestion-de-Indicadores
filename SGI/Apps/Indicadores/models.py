@@ -9,7 +9,7 @@ class Indicador(models.Model):
     tipo = models.CharField(max_length=50)
     descripcion = models.TextField()
     estado = models.CharField(max_length=30)
-    fecha_estad0 = models.DateField()
+    fecha_estado = models.DateField()
     min_valor = models.FloatField()
     med_valor = models.FloatField()
     max_valor = models.FloatField()
