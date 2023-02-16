@@ -4,4 +4,5 @@ from Apps.Indicadores import views
 
 urlpatterns = [
     path('index/', views.indicadores_index,name = 'index'),
+    path('base/',views.base, name= 'base'),
 ]

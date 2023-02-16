@@ -3,4 +3,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def indicadores_index(request):
-    return HttpResponse("Hola aqui estan los indicadores")
+    return render(request,'indicadores/index.html')
+
+def base(request):
+    return render(request,'base/base.html')    
