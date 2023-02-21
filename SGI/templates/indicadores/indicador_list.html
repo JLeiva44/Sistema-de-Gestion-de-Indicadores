@@ -21,8 +21,8 @@
 
     </thead>
     <tbody>
-        {% if indicadores %}
-        {% for indicador in indicadores %}
+        {% if object_list %}
+        {% for indicador in object_list %}
         <tr>
             <td>{{indicador.nombre}}</td>
             <td>{{indicador.tipo}}</td>

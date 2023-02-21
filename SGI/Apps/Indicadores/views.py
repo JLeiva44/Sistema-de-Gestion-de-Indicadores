@@ -1,9 +1,40 @@
 from re import L
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from Apps.Indicadores.form import Alarma_Form, Valor_Indicador_Form, Medida_Form,Indicador_Form
 from Apps.Indicadores.models import Indicador
 # Create your views here.
+
+# vistas basadas en clases
+
+class Indicador_List(ListView):
+    model = Indicador
+    template_name: str = 'indicadores/indicador_list.html'
+
+class Indicador_Create(CreateView):
+    model = Indicador
+    form_class= Indicador_Form
+    template_name: str = 'indicadores/indicador_form.html'
+    success_url= reverse_lazy('indicadores:listar_indicador')
+
+class Indicador_Update(UpdateView):
+    model = Indicador
+    fields = '__all__'
+    form_class: Indicador_Form
+    template_name: str = 'indicadores/indicador_form.html'
+    success_url = reverse_lazy('indicadores:listar_indicador')
+
+
+
+class Indicador_Delete(DeleteView):
+    model = Indicador
+    fields = '__all__'   
+    template_name: str = 'indicadores/indicador_delete.html'
+    success_url = reverse_lazy('indicadores:listar_indicador')
+
+# vistas basadas en funciones
 
 def indicadores_index(request):
     return render(request,'indicadores/index.html')

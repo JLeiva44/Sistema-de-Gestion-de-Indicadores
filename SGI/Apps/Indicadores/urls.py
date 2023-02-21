@@ -7,10 +7,10 @@ app_name = "indicadores"
 
 urlpatterns = [
     path('', views.indicadores_index,name = 'index'),
-    path('indicadorform/',views.indicadores_form, name = 'crear_indicador'),
-    path('listarindicador/',views.indicador_list, name = 'listar_indicador'),
-    path('actualizarindicador/<id_indicador>/',views.indicator_update, name = 'actualizar_indicador'),
-    path('eliminarindicador/<id_indicador>/',views.indicator_delete, name = 'eliminar_indicador'),
+    path('indicadorform/',views.Indicador_Create.as_view(), name = 'crear_indicador'),
+    path('listarindicador/',views.Indicador_List.as_view(), name = 'listar_indicador'),
+    path('actualizarindicador/<pk>/',views.Indicador_Update.as_view(), name = 'actualizar_indicador'),
+    path('eliminarindicador/<pk>/',views.Indicador_Delete.as_view(), name = 'eliminar_indicador'),
 
  
 
