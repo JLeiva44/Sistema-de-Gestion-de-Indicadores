@@ -1,0 +1,53 @@
+{% extends 'base/base.html'%}
+
+{% block content%}
+<table class = "table">
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Tipo</td>
+            <td>Descripcion</td>
+            <td>Estado</td>
+            <td>Fecha de estado</td>
+            <td>Valor Minimo</td>
+            <td>Valor Medio</td>
+            <td>Valor Maximo</td>
+            <td>Valor Critico</td>
+            <td>Frecuencia</td>
+            <td>Irregularidades</td>
+            <td>Unidad de valor</td>
+            <td>Correos</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% if indicadores %}
+        {% for indicador in indicadores %}
+        <tr>
+            <td>{{indicador.nombre}}</td>
+            <td>{{indicador.tipo}}</td>
+            <td>{{indicador.descripcion}}</td>
+            <td>{{indicador.estado}}</td>
+            <td>{{indicador.fecha_estado}}</td>
+            <td>{{indicador.min_valor}}</td>
+            <td>{{indicador.med_valor}}</td>
+            <td>{{indicador.max_valor}}</td>
+            <td>{{indicador.valor_critico}}</td>
+            <td>{{indicador.frecuencia}}</td>
+            <td>{{indicador.irregularidades}}</td>
+            <td>{{indicador.unidad_valor}}</td>
+            <td>{{indicador.correos}}</td>
+            <td>
+                <a class="btn btn-primary" href="{% url  'indicadores:actualizar_indicador' indicador.id %}">Editar</a>
+                <a class="btn btn-primary" href="{% url  'indicadores:eliminar_indicador' indicador.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor%}
+
+        {% else %}
+        <h1>No hay registros de indicadores</h1>
+
+        {% endif %}
+    </tbody>
+</table>
+{%endblock%}

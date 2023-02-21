@@ -19,5 +19,5 @@ from Apps.Indicadores import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('indicadores/', include('Apps.Indicadores.urls')),
+    path('', include('Apps.Indicadores.urls', namespace='indicadores')),
 ]

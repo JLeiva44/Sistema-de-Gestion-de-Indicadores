@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block content%}
+<form method="post">
+    {% csrf_token %}
+    <h3>Desea eliminar el registro de {{indicador.nombre}}</h3> 
+
+    <button class="btm btn-danger" type = "submit">Si, eliminar</button>
+    <a class="btn btn-default" href="{% url 'indicadores:listar_indicador' %}">
+        Cancelar
+    </a>
+</form>
+
+{%endblock%}
+
