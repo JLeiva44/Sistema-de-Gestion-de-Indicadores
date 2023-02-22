@@ -1,0 +1,35 @@
+{% extends 'base/base.html'%}
+
+{% block content%}
+<table class = "table">
+    <thead>
+        <tr>
+            <td>Valor</td>
+            <td>Valor en Porcentaje</td>
+            <td>Fecha</td>
+            <td>Indicador</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for valor in object_list %}
+        <tr>
+            <td>{{valor.valor}}</td>
+            <td>{{valor.valor_en_porcentaje}}</td>
+            <td>{{valor.fecha}}</td>
+            <td>{{valor.indicador}}</td>
+            <td>
+                <a class="btn btn-primary" href="{% url  'indicadores:actualizar_valor_indicador' valor.id %}">Editar</a>
+                <a class="btn btn-primary" href="{% url  'indicadores:eliminar_valor_indicador' valor.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor%}
+
+        {% else %}
+        <h1>No hay registros de valores</h1>
+
+        {% endif %}
+    </tbody>
+</table>
+{%endblock%}

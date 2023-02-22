@@ -1,0 +1,37 @@
+{% extends 'base/base.html'%}
+
+{% block content%}
+<table class = "table">
+    <thead>
+        <tr>
+            <td>Valor Alerta</td>
+            <td>Nivel</td>
+            <td>Estado</td>
+            <td>Fecha</td>
+            <td>Valor de indicador</td>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for alarma in object_list %}
+        <tr>
+            <td>{{alarma.valor_alerta}}</td>
+            <td>{{alarma.nivel_alarma}}</td>
+            <td>{{alarma.estado_alarma}}</td>
+            <td>{{alarma.fecha}}</td>
+            <td>{{alarma.valor_de_indicador}}</td>
+            <td>
+                <a class="btn btn-primary" href="{% url  'indicadores:actualizar_alarma' alarma.id %}">Editar</a>
+                <a class="btn btn-primary" href="{% url  'indicadores:eliminar_alarma' alarma.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor%}
+
+        {% else %}
+        <h1>No hay registros de Alarmas</h1>
+
+        {% endif %}
+    </tbody>
+</table>
+{%endblock%}
